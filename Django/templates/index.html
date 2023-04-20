@@ -2,32 +2,17 @@
 {% block content %}
 
 <div class="container">
-
+<h1>{{mensaje}}</h1>
 
     <ul class="list-group">
-        {%for i in personas%}
+        {% for i in productos %}
 
         <li class="list-group-item">
-            <div class="card border-dark mb-3" style="max-width: 13rem;">
-                <div class="card-header">{{mensaje}}</div>
-                <div class="card-body text-dark">
-                    <h5 class="card-title">{{i.titulo}}</h5>
-                    {% load static %}
-                    <p class="card-text"> {%if i.adulto%}
-                        <span class="badge text-bg-success"> Puede ingresar </span>
-                        <img src="{% static 'image/pokemon.gif' %}" width="150">
+        {{i}}
 
-                        {%else%}
-                        <span class="badge text-bg-danger"> No Puede ingresar </span>
-                        <img src="{% static 'image\hora_de_aventura.gif' %}" width="150">
+        <span class="text-success"> {{i.price}}</span>
 
-                        {%endif%}
-                    </p>
-                </div>
-
-                </span>
         </li>
-
         {%endfor%}
     </ul>
 </div>

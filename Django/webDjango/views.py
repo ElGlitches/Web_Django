@@ -7,19 +7,17 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from .forms import Registro
 from django.contrib.auth.models import User
+from products.models import Product
 
 
 
 def index(request):
+    productos = Product.objects.all()
     return render(request, 'index.html',{
-        'mensaje': 'Ingreso',
-        'titulo': 'Personas',
-        'personas':[
-            {'titulo':'Maria','Edad':18,'adulto':True },
-            {'titulo':'Jose','Edad':2,'adulto':False },
-            {'titulo':'Juan','Edad':43,'adulto':True },
-            {'titulo':'Rosa','Edad':8,'adulto':False }
-        ]})
+        'mensaje': 'Tienda',
+        'titulo': 'Inicio de tienda',
+        'productos': productos,
+        })
 
 def login(request):
     if request.user.is_authenticated:
