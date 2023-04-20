@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="col-12 col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Login</h2>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username"> Username</label>
+                                <input type="text" name="username" class="form-control">
+                            </div>
+            
+                            <div class="form-group">
+                                <label for="password"> Password</label>
+                                <input type="password" name="password" class="form-control">
+                            </div>
+            
+                            <button type="submit" class="btn btn-primary"> Login </button>
+                            {%if messages%}
+                            {%for m in messages%}
+                            {%if m.tag == 'success'%}
+                            <div class="alert alert-success">
+                                {{m}}
+                            </div>
+                            
+                            {%endif%}
+                            {%endfor%}
+                            {%endif%}
+                        </form>
+                        <a href="{% url 'social:begin' 'facebook' %}">Continuar con facebook</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

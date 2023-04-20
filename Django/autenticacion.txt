@@ -1,0 +1,24 @@
+#  installar pip social-auth-app-django
+
+
+#ubicar en setting app 
+
+'social_django',
+
+# Ubicarlo en las url
+path('social-auth/', include('social_django.urls', namespace="social")),
+
+
+
+
+#tokens
+SOCIAL_AUTH_FACEBOOK_KEY = "1612123192639293"
+SOCIAL_AUTH_FACEBOOK_SECRET = "5f09216ae7c1e780bdd9a002db8afddf"
+
+#agregar al final del settings.py
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+

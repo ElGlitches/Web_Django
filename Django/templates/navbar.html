@@ -1,0 +1,28 @@
+{% url 'login' as login %}
+{% url 'registro' as registro %}
+{% url 'salir' as salir %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Tienda</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == login %} active{% endif %}" aria-current="page" href="{{login}}"><span class="fas fa-user"></span> Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == registro %} active{% endif %}" href="{{registro}}"><span class="fas fa-user"></span> Registro</a>
+                </li>
+                {% if user.is_authenticated%}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{salir}}"><span class="fas fa-sign-in-alt"></span> Salir</a>
+                </li>
+                {%endif%}
+            
+        </div>
+    </div>
+</nav>
