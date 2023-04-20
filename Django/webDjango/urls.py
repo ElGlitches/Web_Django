@@ -18,10 +18,11 @@ from django.contrib import admin
 from django.urls import  path
 from django.urls.conf import include
 from . import views
+from products.views import ProductListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name= 'index'),
+    path('', ProductListView.as_view(), name= 'index'),
     path('users/login', views.login, name= 'login'),
     path('users/registro', views.registro, name= 'registro'),
     path('users/salir', views.salir, name= 'salir'),
