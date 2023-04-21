@@ -4,17 +4,16 @@
 <div class="container">
 <h1>{{mensaje}}</h1>
 
-    <ul class="list-group">
-        {% for i in object_list %}
+<div class="row">
+    {% for i in product_list %}
+    <div class="col-3 mt-4">
+    {% include 'products/snippets/product.html' %}
 
-        <li class="list-group-item">
-        {{i}}
 
-        <span class="text-success"> {{i.price}}</span>
+    </div>
 
-        </li>
-        {%endfor%}
-    </ul>
+    {% endfor %}
+
+    
 </div>
 {%endblock%}
-{% load static %}
