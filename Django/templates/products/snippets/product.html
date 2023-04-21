@@ -2,12 +2,12 @@
 
 <div class="card h-100">
     {% if i.image %}
-    <img src="{{i.image.url}}" height="50%" width="100%">
+    <img src="{{i.image.url}}" height="50%" width="50%">
     {% endif %}
 
     <div class="card-body">
-        <h4 class="card-text">{{i.title}}</h4>
+        <h5 class="card-text">{{i.title}}</h5>
         <p class="card-text">{{i.description}}</p>
-        <a href="#" class="btn btn-primary"> Mas info </a>
+        <a href="{% url 'product' i.slug %}#" class="btn btn-primary"> Mas info </a>
     </div>               
 </div>
