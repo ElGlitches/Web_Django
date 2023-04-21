@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="col">
+        {% include 'products/snippets/search.html' %}
+        <hr>
+
+        <p>Resultados de Busqueda para {{query}} </p>
+
+        <div class="row">
+            {% for i in product_list %}
+            <div class="col-3 mt-4">
+                {% include 'products/snippets/product.html' %}
+            </div>
+            {% endfor %}
+        </div>
+    
+    </div>
+
+{% endblock %}
+

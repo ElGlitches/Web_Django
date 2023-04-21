@@ -2,18 +2,10 @@
 {% block content %}
 
 <div class="container">
-<h1>{{mensaje}}</h1>
+    <h1>{{mensaje}}</h1>
+    {% include "products/snippets/search.html"%}
 
-<div class="row">
-    {% for i in product_list %}
-    <div class="col-3 mt-4">
-    {% include 'products/snippets/product.html' %}
-
-
+    <div class="row">
+        {% include "products/snippets/listProductos.html"%}
     </div>
-
-    {% endfor %}
-
-    
-</div>
-{%endblock%}
+    {%endblock%}
