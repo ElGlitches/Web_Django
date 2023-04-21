@@ -3,14 +3,24 @@
 
 {% block content %}
 
-<div class="col">
+<div class="col-3">
+    {% if product.image%}
+    <img src="{{ product.image.url }}"  alt="pikachu" width="200" height="100">
+    {% endif %}
+</div>
+<div class="col-md-3">
     <div class="h1">
         {{product.title}}
     </div>
     <div class="h5 font-weight-bold">
         Precio: <span class="text-danger">${{product.price}} </span>
     </div>
-    <p> {{product.description}} </p>
+    <div class=" alert alert-info">
+        <strong>
+            {{product.description}}
+
+        </strong>
+    </div>
 
 </div>
 
