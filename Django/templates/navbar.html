@@ -1,6 +1,7 @@
 {% url 'login' as login %}
 {% url 'registro' as registro %}
 {% url 'salir' as salir %}
+{% url 'cart' as cart %}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -21,7 +22,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{salir}}"><span class="fas fa-sign-in-alt"></span> Salir</a>
                 </li>
+            </ul>
                 {%endif%}
+
+                <ul class="navbar-nav">
+                    <li class="nav-item"> 
+                        <a href="{{cart}}" class="nav-link"><span class="fa-solid fa-cart-shopping"></span> Carrito </a>
+                    </li>
+                </ul>
+
             
         </div>
     </div>

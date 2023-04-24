@@ -15,6 +15,7 @@ urlpatterns = [
     path('users/salir', views.salir, name= 'salir'),
     path('social-auth/', include('social_django.urls', namespace="social")),
     path('productos/', include('products.urls')),
+    path('carrito/', include('cart.urls')),
 
 ]
 
