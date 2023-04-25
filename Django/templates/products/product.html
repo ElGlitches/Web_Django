@@ -11,7 +11,11 @@
         Precio: <span class="text-danger">${{product.price}} </span>
     </div>
     <div class="alert alert-info">
-        <strong> {{product.description}} </strong>
+        <p> {{product.description}} </p>
+        
+    </div>
+    <div>
+        {% include 'cart/snippets/add.html' %}
     </div>
 </div>
 

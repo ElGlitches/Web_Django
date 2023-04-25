@@ -1,20 +1,21 @@
 from django.shortcuts import render
 from .models import Cart
+from .funciones import funcionCarrito
+from products.models import Product
 
 # Create your views here.
 
 def cart(request):
-    user = request.user if request.user.is_authenticated else None
-    cart_id = request.session.get('cart_id')
-    cart = Cart.objects.filter(cart_id=cart_id).first()
-
-    if cart is None:
-        cart = Cart.objects.create(user=user)
-    
-    if user and cart.user is None:
-        cart.user = user
-        cart.save()
-    
-    request.session['cart_id'] = cart.id
+    cart = funcionCarrito(request) 
     
     return render(request, 'cart/cart.html',{}) 
+
+def add(request):
+    cart = funcionCarrito(request)
+    product = Product.objects.get(pk=request.POST.get('product_id'))
+
+    cart.product.add(product)
+
+    return render(request, 'cart/add.html',{
+        'product' : product
+        })
