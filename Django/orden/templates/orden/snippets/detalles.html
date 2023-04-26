@@ -1,0 +1,39 @@
+{%load funcion_tag%}
+
+
+<div class="card card border-warning mb-3" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"> resumen del pedido</h5>
+    </div>
+    <div>
+        <table class="table table-borderless table-sm mb-3">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr class="table-info">
+                    <td>Productos:</td>
+                    <td>{{cart.total | precio_tag}}</td>
+                </tr>
+                <tr class="table-info">
+                    <td>Envio:</td>
+                    <td>{{orden.envio_total}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <hr>
+        <div class="fw-bolder text-danger">
+            Total (Impuestos incluidos)
+            <div class="d-inline-block">
+                {{orden.total | precio_tag}}
+            </div>
+        </div>
+    </div>
+</div>
