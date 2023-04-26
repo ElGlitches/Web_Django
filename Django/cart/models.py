@@ -1,7 +1,7 @@
 from django.db import models
 from users.models import User
 from products.models import Product
-from django.db.models.signals import pre_save
+from django.db.models.signals import pre_save, post_save
 from django.db.models.signals import m2m_changed
 import decimal
 import uuid
@@ -26,7 +26,9 @@ class Cart(models.Model):
         self.update_total()
 
     def update_subtotal(self):
-        self.subtotal = sum([product.price for product in self.products.all()])
+        self.subtotal = sum([
+            i.quantity * i.product.price for i in self.product_related()
+        ])
         self.save()
 
     def update_total(self):
@@ -35,12 +37,28 @@ class Cart(models.Model):
             
     def product_related(self):
         return self.cartproduct_set.select_related('product')
+    
+
+class CartProductManager(models.Manager):
+    def crearActualizar(self, cart, product, quantity =1):
+        object, created = self.get_or_create(cart=cart, product=product)
+        if not created:
+            quantity = object.quantity + quantity
+        object.update_quantity (quantity)
+            
+        return object
+
 
 class CartProduct(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    objects = CartProductManager()
+    def update_quantity(self, quantity =1):
+        self.quantity = quantity
+        self.save()
 
 
 def set_cart_id(sender, instance, *args, **kwargs):
@@ -52,5 +70,10 @@ def update_totals(sender, instance, action, *args, **kwargs):
     if action == "post_add" or action == "post_remove" or action == "post_clear":
         instance.update_totals()
 
+def postActualizar(sender, instance, *args, **kwargs):
+    instance.cart.update_totals()
+
+
+post_save.connect(postActualizar, sender=CartProduct)
 pre_save.connect(set_cart_id, sender=Cart)
 m2m_changed.connect(update_totals, sender=Cart.products.through)
