@@ -24,12 +24,23 @@ class Orden(models.Model):
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self) :
+    def __str__(self):
         return self.ordenID
+    
+    def get_total(self):
+        return self.cart.total + self.envio_total
+    
+    def update_total(self):
+        self.total = self.get_total()
+        self.save()
     
 def enviarOrden(sender, instance, *args, **kwargs):
     if not instance.ordenID:
         instance.ordenID = str(uuid.uuid4())
+
+def enviar_total(sender, instance, *args, **kwargs):
+    instance.total = instance.get_total()
         
 
 pre_save.connect(enviarOrden, sender=Orden)
+pre_save.connect(enviar_total, sender=Orden)
