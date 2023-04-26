@@ -16,7 +16,9 @@
             </tr>
         </thead>
         <tbody>
-            {% for product in cart.products.all %}
+            {% for i in cart.product_related %}
+            {% with product=i.product %}
+
             <tr>
                 <th>
                     {{forloop.counter}}
@@ -30,7 +32,7 @@
                     <a href="{% url 'product' product.slug %}">{{product.title}}</a>
                 </th>
                 <th>
-                    1
+                    {{i.quantity}}
                 </th>
                 <th>
                     <span class="font-weigth-bold text-danger">{{product.price | precio_tag}}</span>
@@ -38,7 +40,7 @@
 
                 </th>
             </tr>
-            
+            {% endwith %}
             {% endfor %}
             
         </tbody>
