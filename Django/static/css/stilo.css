@@ -1,0 +1,15 @@
+.seccion{
+    text-align: center;
+    width: 100%;
+    background-color: #09790c;
+    margin: 14 auto 4 auto;
+    padding: 3% 0 3% 0;
+   
+}
+
+.seccion-1{
+    color:white;
+    font-size:30px;
+    border:white 3px solid;
+    padding: 5px 10px 5px;
+}
