@@ -2,7 +2,7 @@ from .models import Orden
 
 
 def funcionOrden(cart, request):    
-    orden = Orden.objects.filter(cart=cart).first()
+    orden = cart.orden
 
     if orden is None and request.user.is_authenticated:
         orden = Orden.objects.create(cart=cart, user=request.user) 
