@@ -1,21 +1,34 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 from .models import Cart
 from .funciones import funcionCarrito
 from products.models import Product
 
+
 # Create your views here.
+
 
 def cart(request):
     cart = funcionCarrito(request) 
     
-    return render(request, 'cart/cart.html',{}) 
+    return render(request, 'cart/cart.html', {
+        'cart': cart
+    }) 
 
 def add(request):
     cart = funcionCarrito(request)
-    product = Product.objects.get(pk=request.POST.get('product_id'))
+    product = get_object_or_404(Product, pk=request.POST.get('product_id'))
 
-    cart.product.add(product)
+    cart.products.add(product)
 
     return render(request, 'cart/add.html',{
-        'product' : product
+        'product': product
         })
+
+def remove(request):
+    cart = funcionCarrito(request)
+    product = get_object_or_404(Product, pk=request.POST.get('product_id'))
+    cart.products.remove(product)
+
+    return redirect('cart')

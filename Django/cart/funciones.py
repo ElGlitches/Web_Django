@@ -13,6 +13,6 @@ def funcionCarrito(request):
         cart.user = user
         cart.save()
     
-    request.session['cart_id'] = cart.id
+    request.session['cart_id'] = cart.cart_id
 
     return cart
