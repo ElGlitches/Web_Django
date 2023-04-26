@@ -1,0 +1,134 @@
+[
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "title": "Iphone 12",
+        "description": "Iphone 12",
+        "price": "500.00",
+        "image": "",
+        "created_at": "2023-04-21T03:25:03.105Z",
+        "slug": "iphone12"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "title": "iphone 13",
+        "description": "iphone 13",
+        "price": "600.00",
+        "image": "",
+        "created_at": "2023-04-21T03:25:31.110Z",
+        "slug": "iphone13"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+        "title": "airpods",
+        "description": "airpods",
+        "price": "200.00",
+        "image": "",
+        "created_at": "2023-04-21T03:25:56.470Z",
+        "slug": "airpods"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+        "title": "airpods 2",
+        "description": "airpods 2",
+        "price": "300.00",
+        "image": "",
+        "created_at": "2023-04-21T03:26:20.773Z",
+        "slug": "airpods2"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+        "title": "iphone 14",
+        "description": "iphone 14",
+        "price": "700.00",
+        "image": "",
+        "created_at": "2023-04-21T03:38:33.945Z",
+        "slug": "iphone-14"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+        "title": "airpods 3",
+        "description": "airpods 3",
+        "price": "400.00",
+        "image": "",
+        "created_at": "2023-04-21T03:47:56.284Z",
+        "slug": "airpods-3"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+        "title": "iphone 15",
+        "description": "iphone 15",
+        "price": "800.00",
+        "image": "",
+        "created_at": "2023-04-21T03:59:23.319Z",
+        "slug": "iphone-15"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 8,
+    "fields": {
+        "title": "airpods",
+        "description": "airpods",
+        "price": "150.00",
+        "image": "",
+        "created_at": "2023-04-21T04:00:30.614Z",
+        "slug": "airpods-c5c0101f"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 9,
+    "fields": {
+        "title": "picachu",
+        "description": "picachu",
+        "price": "10.00",
+        "image": "products/pokemon.gif",
+        "created_at": "2023-04-21T04:18:31.177Z",
+        "slug": "picachu"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 10,
+    "fields": {
+        "title": "homero",
+        "description": "homero",
+        "price": "15.00",
+        "image": "products/los_simpsons.gif",
+        "created_at": "2023-04-21T04:33:24.292Z",
+        "slug": "homero"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 11,
+    "fields": {
+        "title": "HDA",
+        "description": "Hora de aventura",
+        "price": "15.00",
+        "image": "products/hora_de_aventura.gif",
+        "created_at": "2023-04-21T04:33:46.748Z",
+        "slug": "hda"
+    }
+}
+]
