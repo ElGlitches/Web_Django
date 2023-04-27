@@ -1,12 +1,11 @@
 {%load funcion_tag%}
 
-
 <div class="card card border-warning mb-3" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title"> resumen del pedido</h5>
     </div>
     <div>
-        <table class="table table-borderless table-sm mb-3">
+        <table class="table table-borderless table-sm ">
             <thead>
                 <tr>
                     <th scope="col"></th>
@@ -35,5 +34,8 @@
                 {{orden.total | precio_tag}}
             </div>
         </div>
+    </div>
+    <div class="d-grid gap-2 mt-2">
+        <a href="#" class="btn btn-warning">Continuar</a>
     </div>
 </div>
