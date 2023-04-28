@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth import logout
 from .forms import Registro
-from django.contrib.auth.models import User
+from users.models import User
 from products.models import Product
 from django.http import HttpResponseRedirect
 
