@@ -17,3 +17,7 @@ class DireccionEnvio(models.Model):
 
     def __str__(self):
         return self.postal_code
+    
+    @property
+    def direccion(self):
+        return '-{},{},{},{}'.format(self.line1,self.city,self.reference,self.postal_code)

@@ -6,6 +6,15 @@
         Mis Direcciones
     </div>
     <a href="{%url 'formulariodir'%}">Agregar Direccion</a>
+    <div class="mt-2">
+        {%for i in object_list%}
+
+        <div class="mt-2">
+            {%include 'direccion_envios/snippets/cartDirecciones.html'%}
+        </div>
+
+        {%endfor%}
+    </div>
 </div>
 
 {%endblock%}
