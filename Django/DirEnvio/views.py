@@ -1,6 +1,7 @@
 from .models import DireccionEnvio
 from .forms import DireccionEnvioForm
-from django.shortcuts import render
+from django.shortcuts import render 
+from django.shortcuts import get_object_or_404 
 from django.shortcuts import redirect
 from django.shortcuts import reverse
 from django.contrib import messages
@@ -65,4 +66,16 @@ class EliminarDireccionEnvio(LoginRequiredMixin,DeleteView):
         
         return super(EliminarDireccionEnvio, self).dispatch(request, *args, **kwargs)
 
-    
+@login_required(login_url='login')    
+def FuncionDefault(request, pk):
+        direccion_envio = get_object_or_404(DireccionEnvio, pk=pk)
+
+        if request.user.id!= direccion_envio.user.id:
+            return redirect('index')
+        
+        if request.user.has_direccion_envio():
+            request.user.direccion_envio.update_default()
+
+        direccion_envio.update_default(True)
+
+        return redirect('direccion_envio')

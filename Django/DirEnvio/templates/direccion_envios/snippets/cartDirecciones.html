@@ -13,7 +13,7 @@
                 <span class="badge bg-success">Direccion Principal</span>
             </div>
             {%else%}
-            <a href="" class="btn btn-primary btn-sm">Default</a>
+            <a href="{% url 'default' i.pk%}" class="btn btn-primary btn-sm">Default</a>
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a href="{% url 'remove_direccion_envio' i.pk%}" class="btn btn-danger btn-sm">Eliminar</a>

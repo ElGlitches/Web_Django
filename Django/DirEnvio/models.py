@@ -18,6 +18,11 @@ class DireccionEnvio(models.Model):
     def __str__(self):
         return self.postal_code
     
+    def update_default(self, default=False):
+        self.default = default
+        self.save()
+        
+    
     @property
     def direccion(self):
-        return '-{},{},{},{}'.format(self.line1,self.city,self.reference,self.postal_code)
+        return '{},{},{},{}'.format(self.line1,self.city,self.reference,self.postal_code)

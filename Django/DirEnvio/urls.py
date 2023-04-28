@@ -6,4 +6,5 @@ urlpatterns = [
     path('nueva', views.FormularioDir, name='formulariodir'),
     path('editar/<int:pk>', views.ActualizarDireccionEnvio.as_view(), name='update_direccion_envio'),
     path('eliminar/<int:pk>', views.EliminarDireccionEnvio.as_view(), name='remove_direccion_envio'),
+    path('default/<int:pk>', views.FuncionDefault, name='default'),
 ]
