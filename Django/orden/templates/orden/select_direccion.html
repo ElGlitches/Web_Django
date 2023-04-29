@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block breadcrumb %}
+{% include 'orden/snippets/breadcrumb.html' %}
+{% endblock %}
+{% block content %}
+
+<div class="col">
+    <div class="h3">
+        Selecciona una direccion
+    </div>
+
+    <div class="mt-2">
+        {%for direccion_envio in direccion_envios %}
+        <div class="card mb-2">
+            <div class="card-body card border-success"> 
+                <h4 class="card-title">{{ direccion_envio.direccion }}</h4>
+                <p class="card-title">{{ direccion_envio.postal_code }}</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{% url 'check_direccion' direccion_envio.pk%}" class="btn btn-outline-success" style="max-width: 8rem" >seleccionar</a> 
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+{%endblock%}

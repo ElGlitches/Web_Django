@@ -21,6 +21,9 @@ class DireccionEnvio(models.Model):
     def update_default(self, default=False):
         self.default = default
         self.save()
+
+    def has_orden(self):
+        return self.orden_set.count()>=1
         
     
     @property

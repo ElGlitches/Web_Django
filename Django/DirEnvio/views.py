@@ -1,3 +1,6 @@
+from django.http.response import HttpResponseRedirect
+from cart.funciones import funcionCarrito
+from orden.utils import funcionOrden
 from .models import DireccionEnvio
 from .forms import DireccionEnvioForm
 from django.shortcuts import render 
@@ -30,8 +33,17 @@ def FormularioDir(request):
     if request.method == 'POST' and form.is_valid():
         direccion_envio = form.save(commit=False)
         direccion_envio.user = request.user
-        direccion_envio.default = not DireccionEnvio.objects.filter(user=request.user).exists()
+        direccion_envio.default = not request.user.has_direccion_envio()
         direccion_envio.save()
+
+        if request.GET.get('next'):
+            if request.GET.get('next') == reverse('direccion'):
+                cart = funcionCarrito(request)
+                orden =funcionOrden(cart,request)
+
+                orden.update_direction_envio(direccion_envio)
+                return HttpResponseRedirect(request.GET['next'])
+
 
         messages.success(request, 'Direccion creada correctamente')
         return redirect('direccion_envio')
@@ -61,6 +73,10 @@ class EliminarDireccionEnvio(LoginRequiredMixin,DeleteView):
         if self.get_object().default:
             return redirect('direccion_envio')
         
+        if self.get_object().has_orden():
+            messages.error(request, 'No se puede eliminar la direccion de envio porque tiene orden asociada')
+            return redirect('direccion_envio') 
+
         if request.user.id != self.get_object().user.id:
             return redirect('index')
         
