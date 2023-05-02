@@ -5,6 +5,7 @@ from users.models import User
 from cart.models import Cart
 from django.db.models.signals import pre_save
 from .comun import OrdenStatus,choices
+from .comun import choices
 
 # Create your models here.
 

@@ -10,8 +10,7 @@
                         Ordenes completadas
                     </div>
                 </div>
-
-                 <div>
+                <div>
                     {{orden.created_at}}
                 </div>
             </div>
@@ -34,5 +33,34 @@
 
         </div>
     </div>
+    <div class="card-body">
+        {% for i in orden.cart.product_related %}
+        {% with product=i.product%}
+        <div class="row">
+            <div class="col-4">
+                {% if product.image%}
+                <img src="{{product.image.url}}" alt="" width="70" height="70">
+                {%endif%}
+            </div>
+            <div class="col-4">
+                <div>
+                    {{product.title}}
+                </div>
+                <div class="text-danger">
+                    {{product.price |precio_tag}}
+                </div>
+            </div>
+            <div class="col-4">
+                <div>
+                    Cantidad
+                </div>
+                <div>
+                    {{i.quantity}}
+                </div>
+            </div>
+        </div>
 
+        {% endwith %}
+        {%endfor%}
+    </div>
 </div>
