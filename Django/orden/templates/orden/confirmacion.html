@@ -60,7 +60,8 @@
         </div>
     </div>
     <div class="col">
-        {% include 'orden/snippets/detalles.html' %}
+        {%url 'completado' as next_url%}
+        {% include 'orden/snippets/detalles.html'  with next_url=next_url %}
 
         <div clas>
             <div>

@@ -9,4 +9,5 @@ urlpatterns = [
     path('establecer/direccion/<int:pk>', views.check_direccion, name='check_direccion'),
     path('confirmacion', views.confirmacion, name='confirmacion'),
     path('cancelar', views.cancelar_orden, name='cancelar'),
+    path('completado', views.completado_orden, name='completado'),
 ]

@@ -17,7 +17,8 @@
     </div>
 
     <div class="col">
-        {%include 'orden/snippets/detalles.html'%}
+        {%url 'direccion' as next_url%}
+        {%include 'orden/snippets/detalles.html' with next_url=next_url%}
 
     </div>
 

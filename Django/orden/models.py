@@ -50,6 +50,11 @@ class Orden(models.Model):
         self.status = OrdenStatus.CANCELED
         self.save()
 
+    def completado(self):
+        self.status = OrdenStatus.COMPLETED
+        self.save()
+
+
     
     def update_direction_envio(self, direccion_envio):
         self.direccion_envio = direccion_envio

@@ -77,7 +77,6 @@ def confirmacion(request):
 def cancelar_orden(request):
     cart = funcionCarrito(request)
     orden = funcionOrden(cart,request)
-
     if request.user.id!= orden.user.id:
         return redirect('index')
 
@@ -86,5 +85,19 @@ def cancelar_orden(request):
     funcionEliminarOrden(request)
 
     messages.error(request, 'Se ha cancelado la orden')
+    return redirect('index')
+
+@login_required(login_url='login')
+def completado_orden(request):
+    cart = funcionCarrito(request)
+    orden = funcionOrden(cart,request)
+    if request.user.id!= orden.user.id:
+        return('index')
+    
+    orden.completado()
+    funcionEliminarCart(request)
+    funcionEliminarOrden(request)
+
+    messages.success(request, 'Se ha completado la orden')
     return redirect('index')
 
