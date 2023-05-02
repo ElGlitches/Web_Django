@@ -11,10 +11,13 @@
     </div>
     <div>
         {% include 'direccion_envios/snippets/cartDirecciones.html' %}
+        <div class="mt-2">
+            <a href="{%url 'confirmacion'%}" class="btn btn-primary"> Continuar</a>
+        </div>
         
         {%if contDireccionEnvio %}
         <div class="mt-2">
-            <a href="{%url 'select_direccion'%}" class="btn btn-primary"> Seleccionar Direccion</a>
+            <a href="{%url 'select_direccion'%}" class="btn btn-success"> Seleccionar Direccion</a>
         </div>
         {% endif %}
 

@@ -16,3 +16,6 @@ def funcionCarrito(request):
     request.session['cart_id'] = cart.cart_id
 
     return cart
+
+def funcionEliminarCart(request):
+    request.session['cart_id'] = None

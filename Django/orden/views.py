@@ -1,6 +1,7 @@
+from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
-from cart.funciones import funcionCarrito
-from .utils import funcionOrden
+from cart.funciones import funcionCarrito, funcionEliminarCart
+from .utils import funcionEliminarOrden, funcionOrden
 from .utils import funcionbreadcrumb
 from .models import Orden
 from DirEnvio.models import DireccionEnvio
@@ -56,3 +57,34 @@ def check_direccion(request,pk):
     
     orden.update_direction_envio(direccion_envio)
     return redirect('direccion')
+
+@login_required(login_url='login')
+def confirmacion(request):
+    cart = funcionCarrito(request)
+    orden = funcionOrden(cart,request)
+    direccion_envio = orden.direccion_envio
+    if direccion_envio is None:
+        return redirect ('direccion')
+    
+    return  render(request, 'orden/confirmacion.html',{
+        'cart':cart,
+        'orden':orden,
+        'direccion_envio':direccion_envio,
+        'breadcrumb':funcionbreadcrumb(address=True,confirmation=True)
+        })
+
+@login_required(login_url='login')
+def cancelar_orden(request):
+    cart = funcionCarrito(request)
+    orden = funcionOrden(cart,request)
+
+    if request.user.id!= orden.user.id:
+        return redirect('index')
+
+    orden.cancelar()
+    funcionEliminarCart(request)
+    funcionEliminarOrden(request)
+
+    messages.error(request, 'Se ha cancelado la orden')
+    return redirect('index')
+

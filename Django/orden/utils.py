@@ -21,3 +21,6 @@ def funcionbreadcrumb(products=True, address=False, payment=False, confirmation=
         {'title':'Confirmacion', 'active':confirmation, 'url':reverse('orden')},
     ]
 
+def funcionEliminarOrden(request):
+        request.session['orden_id'] = None
+
