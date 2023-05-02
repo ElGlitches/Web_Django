@@ -5,7 +5,7 @@ from django.db.models.signals import pre_save, post_save
 from django.db.models.signals import m2m_changed
 import decimal
 import uuid
-
+from orden.comun import OrdenStatus
 # Create your models here.
 
 class Cart(models.Model):
@@ -43,7 +43,7 @@ class Cart(models.Model):
     
     @property
     def orden(self):
-        return self.orden_set.first()
+        return self.orden_set.filter(status = OrdenStatus.CREATED).first()
     
 
 class CartProductManager(models.Manager):

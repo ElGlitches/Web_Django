@@ -1,0 +1,38 @@
+{% load funcion_tag %}
+
+<div class="card mb-2">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-4">
+                <div class="alert alert-success d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2"  width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                    <div>
+                        Ordenes completadas
+                    </div>
+                </div>
+
+                 <div>
+                    {{orden.created_at}}
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="badge bg-primary">
+                    Total: 
+                </div>
+                <div>
+                    {{orden.total |precio_tag}}
+                </div>
+
+            </div>
+            <div class="col-4">
+                <div class="badge bg-warning">
+                    Direccion de envio
+                </div>
+                {{orden.direccion_envio}}
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

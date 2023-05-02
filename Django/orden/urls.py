@@ -10,4 +10,5 @@ urlpatterns = [
     path('confirmacion', views.confirmacion, name='confirmacion'),
     path('cancelar', views.cancelar_orden, name='cancelar'),
     path('completado', views.completado_orden, name='completado'),
+    path('completados', views.OrdenView.as_view(), name='completados'),
 ]

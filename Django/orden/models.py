@@ -3,18 +3,10 @@ from django.db import models
 from DirEnvio.models import DireccionEnvio
 from users.models import User
 from cart.models import Cart
-from enum import Enum
 from django.db.models.signals import pre_save
+from .comun import OrdenStatus,choices
 
 # Create your models here.
-
-class OrdenStatus(Enum):
-    CREATED = 'CREATED'
-    PAYED = 'PAYED'
-    COMPLETED = 'COMPLETED'
-    CANCELED = 'CANCELED'
-
-choices = [ (tag, tag.value) for tag in OrdenStatus]
 
 class Orden(models.Model):
     ordenID = models.CharField(max_length=100,null=False, unique=True, blank=False)

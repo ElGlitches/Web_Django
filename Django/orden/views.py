@@ -6,9 +6,19 @@ from .utils import funcionbreadcrumb
 from .models import Orden
 from DirEnvio.models import DireccionEnvio
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.list import ListView
+from django.db.models.query import EmptyQuerySet
+
 
 
 # Create your views here.
+class OrdenView(LoginRequiredMixin, ListView):
+        login_url = 'login'
+        template_name = 'orden/ordenes.html'
+
+        def get_queryset(self):
+            return self.request.user.ordenes_completadas()
 
 @login_required(login_url='login')
 def orden(request):
