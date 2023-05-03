@@ -39,7 +39,7 @@
                     <div class="badge bg-warning text-warp">
                         Codigo de descuento
                     </div>
-                    <form>
+                    <form id="formPromo-codigo" action="{% url 'validar'%}">
                         <input type="text" name="codigo" value="" class="form-control" placeholder="Codigo descueto">
                     </form>
                 </div>
@@ -68,14 +68,31 @@
                 <div class="card-body">
                     <a href="{% url 'cancelar' %}" class="btn btn-danger d-grip gap-2">Eliminar orden</a>
                 </div>
-
             </div>
         </div>
-
     </div>
-
-    
-
 </div>
+
+{%endblock%}
+
+{%block js%}
+<script>
+    const form = document.getElementById('formPromo-codigo');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const input = this.codigo;
+        const codigo = input.value;
+        const url = this.action;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response.id)
+            })
+
+    })
+
+</script>
 
 {%endblock%}

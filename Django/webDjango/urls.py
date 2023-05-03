@@ -18,6 +18,7 @@ urlpatterns = [
     path('carrito/', include('cart.urls')),
     path('orden/', include('orden.urls')),
     path('direcciones/', include('DirEnvio.urls')),
+    path('codigopromo/', include('promo_codigo.urls')),
 
 ]
 

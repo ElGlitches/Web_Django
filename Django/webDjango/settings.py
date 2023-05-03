@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'cart',
     'orden',
     'DirEnvio',
+    'promo_codigo',
 
 ]
 
